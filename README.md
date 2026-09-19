@@ -107,15 +107,25 @@ unrecoverable, because it corrupts the ledger everything else derives from.
 
 The rewrite is scoped around what v1 proved, not around adding to it.
 
-| | Status |
-|---|---|
-| Stock ledger, on-hand derivation, multi-tenancy, RBAC | v1, works, carried forward |
-| Sales/purchase orders, invoicing, quotes | v1, carried forward |
-| Assets, work orders, maintenance plans | v1, deferred — built too early |
-| Cash session, reconciliation, voids, discount authority | Rewrite, P0 |
-| Offline-capable, mobile-first operation | Rewrite, P0 |
-| Portuguese-first UI, MZN | Rewrite, P0 |
-| Correctness suite over inventory and cash arithmetic | Rewrite, blocking |
+|                                                         | Status                         |
+| ------------------------------------------------------- | ------------------------------ |
+| Stock ledger, on-hand derivation, multi-tenancy, RBAC   | v1, works, carried forward     |
+| Sales/purchase orders, invoicing, quotes                | v1, carried forward            |
+| Assets, work orders, maintenance plans                  | v1, deferred — built too early |
+| Cash session, reconciliation, voids, discount authority | Rewrite, P0                    |
+| Offline-capable, mobile-first operation                 | Rewrite, P0                    |
+| Portuguese-first UI, MZN                                | Rewrite, P0                    |
+| Correctness suite over inventory and cash arithmetic    | Rewrite, blocking              |
+
+## Documents
+
+|                                        |                                                                      |
+| -------------------------------------- | -------------------------------------------------------------------- |
+| [Architecture](docs/architecture.md)   | Module shape, the movement ledger and why on-hand is derived         |
+| [Multi-tenancy](docs/multi-tenancy.md) | Shared-schema scoping, how it is enforced, and four known weaknesses |
+| [Retrospective](docs/retrospective.md) | Why v1 is being rewritten rather than extended                       |
+
+---
 
 ## Repository note
 
