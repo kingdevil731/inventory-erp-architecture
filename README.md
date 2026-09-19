@@ -40,9 +40,12 @@ means the ledger is the only truth and on-hand is always reconstructible.
 
 The cost is real and shows up quickly: on-hand becomes an aggregate query per
 read, and product lists need it for every row. That is handled by batching —
-`getOnHandByProductIds` computes it for a whole page in one query rather than
-per product — but the underlying scaling problem is unsolved and is a main driver
-of the rewrite.
+computed for a whole page in one query rather than per product — but the
+underlying scaling problem is unsolved and is a main driver of the rewrite.
+
+Corrections are reversals rather than edits, movements carry an idempotency key
+unique per company, and quantities and money are `Decimal` throughout.
+→ **[The stock ledger](docs/stock-ledger.md)**
 
 ### Tenancy is composed at the query layer, not remembered
 
@@ -119,11 +122,13 @@ The rewrite is scoped around what v1 proved, not around adding to it.
 
 ## Documents
 
-|                                        |                                                                      |
-| -------------------------------------- | -------------------------------------------------------------------- |
-| [Architecture](docs/architecture.md)   | Module shape, the movement ledger and why on-hand is derived         |
-| [Multi-tenancy](docs/multi-tenancy.md) | Shared-schema scoping, how it is enforced, and four known weaknesses |
-| [Retrospective](docs/retrospective.md) | Why v1 is being rewritten rather than extended                       |
+|                                        |                                                                                   |
+| -------------------------------------- | --------------------------------------------------------------------------------- |
+| [Architecture](docs/architecture.md)   | Monorepo layout, module shape and where the database boundary sits                |
+| [Stock ledger](docs/stock-ledger.md)   | The append-only movement model, how on-hand is derived, and what is wrong with it |
+| [Multi-tenancy](docs/multi-tenancy.md) | Shared-schema scoping, how it is enforced, and four known weaknesses              |
+| [Decisions](docs/decisions.md)         | Each choice with the alternative rejected and the cost accepted                   |
+| [Retrospective](docs/retrospective.md) | Why v1 is being rewritten rather than extended                                    |
 
 ---
 
